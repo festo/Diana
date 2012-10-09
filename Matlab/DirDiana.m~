@@ -1,0 +1,10 @@
+function [ ] = DirDiana( directory )
+
+    files = dir( [directory '*.*' ]);
+    for k = 1:numel(files)
+        if ~is
+        files(k)
+    end
+
+end
+
