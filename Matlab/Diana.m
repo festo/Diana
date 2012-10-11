@@ -35,19 +35,19 @@ I_closed = imclose(I_opened,se);
 image = I - I_closed;
 
 %kep megjelenitese
-%figure, imshow(image)  
+figure, imshow(image)  
 
 edge1 = 50;
 edge2 = 100;
 
 image_gray_original = rgb2gray(image);
 image_gray = image_gray_original;
-image_gray(image_gray<edge1) = 0;
-image_gray(image_gray>edge2) = 0;
+%image_gray(image_gray<edge1) = 0;
+%image_gray(image_gray>edge2) = 0;
 
 %imhist(image_gray) ;
 
-figure, imshow(image_gray)
+%figure, imshow(image_gray)
 %figure, imshow(image_gray_original);
 
 end
