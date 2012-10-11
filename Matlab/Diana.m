@@ -14,7 +14,7 @@ I = imread( filename );
 %kek reteg eltavolitasa
 %I(:,:,3) = 0;
 
-I_default = I;
+I;
 
 
 % Orientaltsag
@@ -32,7 +32,7 @@ I_opened = imopen(I,se);
 I_closed = imclose(I_opened,se);
 
 %az eredeti kepbol kivonjuk a morfologiailag modositottat
-image = I_default - I_closed;
+image = I - I_closed;
 
 %kep megjelenitese
 %figure, imshow(image)  
