@@ -6,7 +6,7 @@ function [ ] = DirDiana( directory )
             [pathstr, name, ext] = fileparts(files(k).name);
             if eq(max(ismember(extensions,lower(ext))),1)
                 img =  [directory files(k).name];
-                Diana(img);
+                cmp(img);
             end
         end    
     end

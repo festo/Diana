@@ -1,4 +1,4 @@
-function [ ] = Diana( filename )
+function [ image ] = Diana( filename )
 
 if nargin < 1
     display('A függvény egy paramétret vár!')
@@ -6,16 +6,25 @@ if nargin < 1
 end
 
 %init
-Rotated = false;
+Rotated = false; % el van-e forgatva
+se = strel('disk',5); % gömb sugara morfologiai muveleteknel
+percent = 0.20; %Az also hany szazalekot vizsgaljuk 
 
 % kep betoltese
 I = imread( filename );
 
-%kek reteg eltavolitasa
-%I(:,:,3) = 0;
+I = rgb2hsv(I);
 
-I;
+%piros reteg
+%I = I(:,:,1);
 
+%zold reteg
+%I = I(:,:,2);
+
+%kek reteg
+%I = I(:,:,3);
+
+I(:,:,1) = 0;
 
 % Orientaltsag
 [height width d] = size(I);
@@ -24,8 +33,16 @@ if height > width
     I = imrotate(I,90);
 end    
 
-% structuring element
-se = strel('disk',5);
+%vizsgalt terulet leszukitese
+if Rotated
+    cut_size = round(width * (1.0 - percent));
+    max = width;
+else
+    cut_size = round(height * (1.0 - percent));
+    max = height;
+end
+I = I(cut_size:max,:,:);
+%I(1:cut_size,:,:) = 0;
 
 %morfologiai muveletek
 I_opened = imopen(I,se);
@@ -35,19 +52,6 @@ I_closed = imclose(I_opened,se);
 image = I - I_closed;
 
 %kep megjelenitese
-figure, imshow(image)  
-
-edge1 = 50;
-edge2 = 100;
-
-image_gray_original = rgb2gray(image);
-image_gray = image_gray_original;
-%image_gray(image_gray<edge1) = 0;
-%image_gray(image_gray>edge2) = 0;
-
-%imhist(image_gray) ;
-
-%figure, imshow(image_gray)
-%figure, imshow(image_gray_original);
+%figure, imshow(image)
 
 end
