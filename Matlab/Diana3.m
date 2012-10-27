@@ -1,4 +1,4 @@
-function [ image ] = Diana( filename )
+function [ image ] = Diana( filename, param )
 
 if nargin < 1
     display('A függvény egy paramétret vár!')
@@ -7,13 +7,10 @@ end
 
 %init
 Rotated = false; % el van-e forgatva
-se = strel('disk',5); % gömb sugara morfologiai muveleteknel
 percent = 0.20; %Az also hany szazalekot vizsgaljuk 
 
 % kep betoltese
 I = imread( filename );
-
-I = rgb2hsv(I);
 
 %piros reteg
 %I = I(:,:,1);
@@ -24,7 +21,7 @@ I = rgb2hsv(I);
 %kek reteg
 %I = I(:,:,3);
 
-I(:,:,1) = 0;
+%I(:,:,3) = 0;
 
 % Orientaltsag
 [height width d] = size(I);
@@ -42,16 +39,27 @@ else
     max = height;
 end
 I = I(cut_size:max,:,:);
+
 %I(1:cut_size,:,:) = 0;
 
-%morfologiai muveletek
-I_opened = imopen(I,se);
-I_closed = imclose(I_opened,se);
-
-%az eredeti kepbol kivonjuk a morfologiailag modositottat
-image = I - I_closed;
-
-%kep megjelenitese
-%figure, imshow(image)
+Ihsw = rgb2hsv(I);
+Irgb = I;
+    morfIrgb = morf(Irgb,param);
+    morfIhsw = morf(Ihsw,param);
+    
+    i_size = size(morfIhsw)
+    %size(morfIrgb)
+    maxMorf = morfIhsw;
+    
+    for i=1:i_size(1)
+        for j=1:i_size(2)
+            maxMorf(i,j) = max(morfIhsw(i,j),morfIrgb(i,j))
+        end;
+    end;
+    
+    subplot(4,1,1), imshow(I)
+    subplot(4,1,2), imshow(morfIhsw)
+    subplot(4,1,3), imshow(morfIrgb)
+    subplot(4,1,4), imshow(maxMorf)
 
 end
