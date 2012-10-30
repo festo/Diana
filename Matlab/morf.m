@@ -1,8 +1,6 @@
-function [ binariz ] = morf( I, param)
+function [ binariz ] = morf( I, param, se)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-
-    se = strel('rectangle',[13, 1]); % gömb sugara morfologiai muveleteknel
     
     %morfologiai muveletek
     I_opened = imopen(I,se);
