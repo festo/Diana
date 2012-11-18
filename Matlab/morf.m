@@ -1,4 +1,4 @@
-function [ binariz ] = morf( I, param, se)
+function [ image, mapbig, mapbig_bin ] = morf( I, param, se)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -12,8 +12,19 @@ function [ binariz ] = morf( I, param, se)
     map = simpsal (image, param);
     
     mapbig = mat2gray(imresize( map , [ size(image,1) size(image,2) ] ));
-    mapbig_bin = im2bw(mapbig,0.5);
+    nmapbig = zeros(size(mapbig));
     
-    binariz = mapbig_bin;
+    maxval = max(mapbig(:,:))
+    
+    nmapbig(:,:) = mapbig(:,:)/max(mapbig(:,:));
+    
+    
+    %nmapbig = mapbig ./ max;
+    
+    %expmap = exp(nmapbig);
+    %mapbig = expmap/max(expmap);
+    %mapbig = nmapbig;
+    mapbig_bin = im2bw(mapbig,0.5);
+
 end
 

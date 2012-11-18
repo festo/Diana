@@ -6,7 +6,11 @@ function [ ] = DirDiana3( directory )
             [pathstr, name, ext] = fileparts(files(k).name);
             if eq(max(ismember(extensions,lower(ext))),1)
                 img =  [directory files(k).name];
-                Diana3(img);
+                save =  [strcat(directory,'result/') strcat(pathstr, name)];
+                save_mask =  [strcat(directory,'mask/') files(k).name];
+                [mask, figure] = Diana3(img);
+                print(figure, save, '-dpng') ;
+                imwrite(mask, save_mask) ;
             end
         end    
     end
