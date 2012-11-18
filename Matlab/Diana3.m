@@ -1,7 +1,7 @@
 function [ mask, result_figure ] = Diana3( filename )
 
 if nargin < 1
-    display('A függvény egy paramétret vár!')
+    display('Egy mappat var parameterkent!')
     return
 end
 
@@ -14,16 +14,9 @@ se = strel('disk',25); % gomb sugara morfologiai muveleteknel
 % kep betoltese
 I = imread( filename );
 
-%piros reteg
-%I = I(:,:,1);
-
-%zold reteg
-%I = I(:,:,2);
-
-%kek reteg
-%I = I(:,:,3);
-
-%I(:,:,3) = 0;
+%I = I(:,:,1); %R
+%I = I(:,:,2); %G
+%I = I(:,:,3); %B
 
 % Orientaltsag
 [height width d] = size(I);
@@ -68,22 +61,22 @@ I = I(:,cut_size_w:max_w,:);
     
     
     subplot(5,2,3), imshow(morfIhsv)
-    title('HSV (hue=0): morf> I-open(close(I))')
+    title('HSV (hue=0): morph. op. I-open(close(I))')
     
     subplot(5,2,4), imshow(morfIrgb)
-    title('RGB: morf> I-open(close(I))')
+    title('RGB: morph. op. I-open(close(I))')
     
     subplot(5,2,5), imshow(morfIhsv_simpsal)
-    title('HSV (hue=0): simpsal> Itti algorithm')
+    title('HSV (hue=0): simpsal - Itti algorithm')
     
     subplot(5,2,6), imshow(morfIrgb_simpsal)
-    title('RGB: simpsal> Itti algorithm')
+    title('RGB: simpsal - Itti algorithm')
         
     subplot(5,2,7), imshow(morfIhsv_bin)
-    title('HSV (hue=0): binarize> 0.5')  
+    title('HSV (hue=0): binarize')  
     
     subplot(5,2,8), imshow(morfIrgb_bin)
-    title('RGB: binarize> 0.5')
+    title('RGB: binarize')
     
     subplot(5,2,9), imshow(maxMorf)
     title('RGB + HSV (hue=0)')

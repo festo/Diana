@@ -12,19 +12,7 @@ function [ image, mapbig, mapbig_bin ] = morf( I, param, se)
     map = simpsal (image, param);
     
     mapbig = mat2gray(imresize( map , [ size(image,1) size(image,2) ] ));
-    nmapbig = zeros(size(mapbig));
-    
-    maxval = max(mapbig(:,:))
-    
-    nmapbig(:,:) = mapbig(:,:)/max(mapbig(:,:));
-    
-    
-    %nmapbig = mapbig ./ max;
-    
-    %expmap = exp(nmapbig);
-    %mapbig = expmap/max(expmap);
-    %mapbig = nmapbig;
-    mapbig_bin = im2bw(mapbig,0.5);
+    mapbig_bin = im2bw(mapbig, 0.5);
 
 end
 
