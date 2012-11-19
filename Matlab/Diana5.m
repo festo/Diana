@@ -1,8 +1,9 @@
-function [ ] = cmp( filename )
+function [ image ] = Diana5( filename )
 
-
-Image1 = Diana(filename);
-Image2 = Diana2(filename);
+if nargin < 1
+    display('Egy mappat var parameterkent!')
+    return
+end
 
 %init
 Rotated = false; % el van-e forgatva
@@ -15,7 +16,7 @@ I = imread( filename );
 
 %I = I(:,:,1); %R
 %I = I(:,:,2); %G
-%I = I(:,:,3); %B
+I = I(:,:,3); %B
 
 % Orientaltsag
 [height width d] = size(I);
@@ -40,23 +41,21 @@ end
 I = I(cut_size_h:max_h,:,:);
 I = I(:,cut_size_w:max_w,:);
 
-figure;
-
-subplot(4,1,1);
-imshow(I)
-title('Eredeti RGB')
-
-subplot(4,1,2);
-imshow(Image1)
-title('Mask RGB (Csak R)')
-
-subplot(4,1,3);
-imshow(Image2)
-title('Mask RGB (Csak G)')
-
-subplot(4,1,4);
-imshow(Image2)
-title('Mask RGB (Csak B)')
-
+%I(1:cut_size,:,:) = 0;
+    
+    Ihsv = rgb2hsv(I);
+    Ihsv(:,:,1) = 0;
+    
+    %Irgb = I;
+    %piros reteg
+    Irgb = I(:,:,1);
+    
+    [morfIrgb, morfIrgb_simpsal, morfIrgb_bin] = morf(Irgb, custom_param, se);
+    [morfIhsv, morfIhsv_simpsal, morfIhsv_bin] = morf(Ihsv, custom_param, se);
+       
+    maxMorf = morfIhsv_bin;
+    maxMorf(:,:) = morfIhsv_bin(:,:)+morfIrgb_bin(:,:);
+       
+    image = maxMorf;
+    
 end
-
