@@ -10,9 +10,9 @@ param = {};
 
 param.mapWidth = 1024;               % this controls the size of the 'Center' scale
 
-param.useMultipleCenterScales = 1; % classic Itti Algorithm uses multiple scales ( "c \in {2,3,4}" ). but here we default to just 1.
+param.useMultipleCenterScales = 4; % classic Itti Algorithm uses multiple scales ( "c \in {2,3,4}" ). but here we default to just 1.
 
-param.surroundSig = 10;             % this is the standard deviation of the Gaussian blur applied to obtain the 'surround' scale(s).
+param.surroundSig = 5;             % this is the standard deviation of the Gaussian blur applied to obtain the 'surround' scale(s).
                                    % default : one surround scale works fine in my experience. with sigma = 5.
                                    % this can also be an array of surround sigmas, e.g. [ 4 6 ]
                                    % Note: in classic  Itti algorithm, we have ( "delta \in {3,4}\" ).
@@ -20,7 +20,7 @@ param.surroundSig = 10;             % this is the standard deviation of the Gaus
 
 %%%%%%%% normalize maps according to peakiness ? %%%%%
 
-param.useNormWeights = 0;        % 0 = do not weight maps differently , 1 = weight according to peakiness
+param.useNormWeights = 1;        % 0 = do not weight maps differently , 1 = weight according to peakiness
                                  % in classic Itti algorithm, this is used with local maxima normalization.
 
 param.subtractMin = 1;           % 1 => (subtract min, divide by max) ; 0 => (just divide by max)
