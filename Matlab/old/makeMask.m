@@ -1,4 +1,4 @@
-function [ Original, mask ] = Diana3( filename )
+function [ mask ] = makeMask( filename )
 
 if nargin < 1
     display('Egy mappat var parameterkent!')
@@ -13,7 +13,7 @@ se = strel('disk',25); % gomb sugara morfologiai muveleteknel
 
 % kep betoltese
 I = imread( filename );
-Original = I;
+OriginalImage = I;
 
 %I = I(:,:,1); %R
 %I = I(:,:,2); %G
@@ -24,7 +24,9 @@ Original = I;
 if height > width
     Rotated = true;
     I = imrotate(I,90);
-end    
+end
+
+mask = zeros(height, width);
 
 %vizsgalt terulet leszukitese
 if Rotated
@@ -55,32 +57,32 @@ I = I(:,cut_size_w:max_w,:);
     maxMorf = morfIhsv_bin;
     maxMorf(:,:) = morfIhsv_bin(:,:)+morfIrgb_bin(:,:);
     
+    % a maskot megforgatjuk ha kell
+    if Rotated
+        mask = imrotate(mask,90);
+    end 
+    
+    w = 1;
+    for i=cut_size_w:max_w
+        h = 1;
+        for j = cut_size_h:max_h
+            mask(j,i) = maxMorf(h,w);
+            h = h+1;
+        end;
+        w = w + 1;
+    end;
+        
+    % a maskot vissza forgatjuk
+    if Rotated
+        mask = imrotate(mask,-90);
+    end  
+    
     %result_figure = figure();
     
-    %subplot(5,2,1), imshow(I)
-    %title('Original RGB')
-
-    %subplot(5,2,3), imshow(morfIhsv)
-    %title('HSV (hue=0): morph. op. I-open(close(I))')
-    
-    %subplot(5,2,4), imshow(morfIrgb)
-    %title('RGB: morph. op. I-open(close(I))')
-    
-    %subplot(5,2,5), imshow(morfIhsv_simpsal)
-    %title('HSV (hue=0): simpsal - Itti algorithm')
-    
-    %subplot(5,2,6), imshow(morfIrgb_simpsal)
-    %title('RGB: simpsal - Itti algorithm')
-        
-    %subplot(5,2,7), imshow(morfIhsv_bin)
-    %title('HSV (hue=0): binarize')  
-    
-    %subplot(5,2,8), imshow(morfIrgb_bin)
-    %title('RGB: binarize')
-    
-    %subplot(5,2,9), imshow(maxMorf)
-    %title('RGB + HSV (hue=0)')
-    
-    mask = maxMorf;
+    %subplot(2,1,1), imshow(OriginalImage)
+    %title('Original')
+       
+    %subplot(2,1,2), imshow(mask)
+    %title('Mask')
     
 end
