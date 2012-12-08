@@ -11,10 +11,10 @@ LIB = levag(IB, M);
 LIR = levag(IR, M);
 LIG = levag(IG, M);
 
-figure, imshow(M)
+%figure, imshow(M)
 
 M2 = M;
-figure, imshow(M2)
+%figure, imshow(M2)
 
 OutB = roifill(LIB, M2);
 %figure, imshow(OutB)
@@ -24,11 +24,11 @@ OutG = roifill(LIG, M2);
 %figure, imshow(OutG)
 
 OutB = osszerak(IB, OutB, M);
-figure, imshow(OutB)
+%figure, imshow(OutB)
 OutR = osszerak(IR, OutR, M);
-figure, imshow(OutR)
+%figure, imshow(OutR)
 OutG = osszerak(IG, OutG, M);
-figure, imshow(OutG)
+%figure, imshow(OutG)
 
 RGB = cat(3, OutR, OutG, OutB);
 
