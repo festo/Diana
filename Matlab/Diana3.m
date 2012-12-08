@@ -14,6 +14,7 @@ se = strel('disk',25); % gomb sugara morfologiai muveleteknel
 % kep betoltese
 I = imread( filename );
 Original = I;
+figure, imshow(Original)
 
 %I = I(:,:,1); %R
 %I = I(:,:,2); %G

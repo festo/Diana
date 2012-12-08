@@ -13,7 +13,7 @@ LIG = levag(IG, M);
 
 %figure, imshow(M)
 
-M2 = M;
+M2 = BM(M);
 %figure, imshow(M2)
 
 OutB = roifill(LIB, M2);
@@ -37,13 +37,13 @@ result = RGB;
 function M2 = BM(Mask)
 [x y] = size(Mask);
 
-for k=1:x
-    for l=1:y
-        if Mask(k,l)<10
-            Mask(k,l) = 0;
-        end
-    end
-end
+%for k=1:x
+%    for l=1:y
+%        if Mask(k,l)<10
+%            Mask(k,l) = 0;
+%        end
+%   end
+%end
 
 [rf1, cf1] = find(Mask, 1, 'first');
 [cf2, rf2] = find(Mask', 1, 'first');
