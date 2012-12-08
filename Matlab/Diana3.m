@@ -13,8 +13,7 @@ se = strel('disk',25); % gomb sugara morfologiai muveleteknel
 
 % kep betoltese
 I = imread( filename );
-Original = I;
-figure, imshow(Original)
+
 
 %I = I(:,:,1); %R
 %I = I(:,:,2); %G
@@ -25,7 +24,9 @@ figure, imshow(Original)
 if height > width
     Rotated = true;
     I = imrotate(I,90);
-end    
+end   
+
+Original = I;
 
 %vizsgalt terulet leszukitese
 if Rotated
