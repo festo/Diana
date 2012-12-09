@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+  <link rel="stylesheet" type="text/css" href="stylesheets/jquery.lightbox-0.4.css" media="screen" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Diana by festo</title>
+    <script type="text/javascript" src="javascript/jquery.js"></script>
+    <script type="text/javascript" src="javascript/jquery.lightbox-0.4.js"></script>
+    <title>Dátum eltüntetése fotókról</title>
   </head>
 
   <body>
@@ -19,29 +22,43 @@
 
         <header>
           <h1>Diana</h1>
-          <h2>Date removing from images.</h2>
+          <h2>Dátum eltüntetése fotókról</h2>
         </header>
 
         <section id="downloads" class="clearfix">
-          <a href="https://github.com/festo/Diana/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/festo/Diana/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/festo/Diana" id="view-on-github" class="button"><span>View on GitHub</span></a>
+          <a href="https://github.com/festo/Diana/zipball/final" id="download-zip" class="button"><span>Letöltés .zip</span></a>
+          <a href="https://github.com/festo/Diana/tarball/final" id="download-tar-gz" class="button"><span>Letöltés .tar.gz</span></a>
+          <a href="https://github.com/festo/Diana" id="view-on-github" class="button"><span>GitHub</span></a>
         </section>
 
         <hr>
 
         <section id="main_content">
-          <h1>Diana</h1>
+          <h3>Feladat</h3>
+          <p></p>
 
-<p>Date removing from images with inpainting technique in Matlab.</p>
+          <h3>Megvalósítás</h3>
+          <p></p>
 
-<h3>Created by:</h3>
+          <h3>Eredmények</h3>
+          <p>Munkánk eredménye képpen tekintse meg az alábbi példaképpeket.</p>
+          <p>
+            <a href="images/samples/s01.jpg" class="lightbox"><img src="images/samples/01.jpg" width="600" height="450" alt="" /></a>
+          </p>
 
-<ul>
-<li><a href="https://github.com/agota">Ágota Sebők</a></li>
-<li><a href="https://github.com/FlipEverything">László Dobó</a></li>
-<li><a href="https://github.com/festo">Gergely Munkacsy</a></li>
-</ul>
+          <h4>Készitették:</h4>
+
+          <ul>
+            <li><a href="https://github.com/agota">Sebők Ágota</a></li>
+            <li><a href="https://github.com/FlipEverything">Dobó László</a></li>
+            <li><a href="https://github.com/festo">Munkacsy Gergely</a></li>
+          </ul>
+
+          <h4>Kontak</h4>
+          <ul>
+            <li><a href="http://www.inf.u-szeged.hu/~gnemeth/">Németh Gábor</a></li>
+          </ul>
+
         </section>
 
         <footer>
@@ -52,5 +69,10 @@
         
       </div>
     </div>
+    <script type="text/javascript">
+    $(function() {
+      $('a.lightbox').lightBox(); // Select all links with lightbox class
+    });
+    </script>
   </body>
-</html>
+  </html>
