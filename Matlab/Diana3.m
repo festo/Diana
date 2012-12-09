@@ -1,4 +1,4 @@
-function [ Original, mask ] = Diana3( filename )
+function [ result_figure, Original, mask ] = Diana3( filename )
 
 if nargin < 1
     display('Egy mappat var parameterkent!')
@@ -13,11 +13,6 @@ se = strel('disk',25); % gomb sugara morfologiai muveleteknel
 
 % kep betoltese
 I = imread( filename );
-
-
-%I = I(:,:,1); %R
-%I = I(:,:,2); %G
-%I = I(:,:,3); %B
 
 % Orientaltsag
 [height width d] = size(I);
@@ -57,31 +52,31 @@ I = I(:,cut_size_w:max_w,:);
     maxMorf = morfIhsv_bin;
     maxMorf(:,:) = morfIhsv_bin(:,:)+morfIrgb_bin(:,:);
     
-    %result_figure = figure();
+    result_figure = figure('Visible','Off');
     
-    %subplot(5,2,1), imshow(I)
-    %title('Original RGB')
+    subplot(5,2,1), imshow(I)
+    title('Original RGB')
 
-    %subplot(5,2,3), imshow(morfIhsv)
-    %title('HSV (hue=0): morph. op. I-open(close(I))')
+    subplot(5,2,3), imshow(morfIhsv)
+    title('HSV (hue=0): morph. op. I-open(close(I))')
     
-    %subplot(5,2,4), imshow(morfIrgb)
-    %title('RGB: morph. op. I-open(close(I))')
+    subplot(5,2,4), imshow(morfIrgb)
+    title('RGB: morph. op. I-open(close(I))')
     
-    %subplot(5,2,5), imshow(morfIhsv_simpsal)
-    %title('HSV (hue=0): simpsal - Itti algorithm')
+    subplot(5,2,5), imshow(morfIhsv_simpsal)
+    title('HSV (hue=0): simpsal - Itti algorithm')
     
-    %subplot(5,2,6), imshow(morfIrgb_simpsal)
-    %title('RGB: simpsal - Itti algorithm')
+    subplot(5,2,6), imshow(morfIrgb_simpsal)
+    title('RGB: simpsal - Itti algorithm')
         
-    %subplot(5,2,7), imshow(morfIhsv_bin)
-    %title('HSV (hue=0): binarize')  
+    subplot(5,2,7), imshow(morfIhsv_bin)
+    title('HSV (hue=0): binarize')  
     
-    %subplot(5,2,8), imshow(morfIrgb_bin)
-    %title('RGB: binarize')
+    subplot(5,2,8), imshow(morfIrgb_bin)
+    title('RGB: binarize')
     
-    %subplot(5,2,9), imshow(maxMorf)
-    %title('RGB + HSV (hue=0)')
+    subplot(5,2,9), imshow(maxMorf)
+    title('RGB + HSV (hue=0)')
     
     mask = maxMorf;
     
