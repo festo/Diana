@@ -1,10 +1,21 @@
 Diana
 =====
 
-Date removing from images with inpainting technique in Matlab.
+Dátum eltüntetése fotókról
 
-### Created by:
+### Készítették:
 
-* [Ágota Sebők](https://github.com/agota)
-* [László Dobó](https://github.com/FlipEverything)
-* [Gergely Munkacsy](https://github.com/festo)
+* [Sebők Ágota](https://github.com/agota)
+* [Dobó László](https://github.com/FlipEverything)
+* [Munkacsy Gergely](https://github.com/festo)
+
+### Kontakt:
+
+* [Németh Gábor](http://www.inf.u-szeged.hu/~gnemeth/)
+
+### Weboldal:
+
+* [http://festo.github.com/Diana/](http://festo.github.com/Diana/)
+
+### Készült:
+* 2012. December 9.
