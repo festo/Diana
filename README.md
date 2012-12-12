@@ -3,11 +3,11 @@ Diana
 
 Dátum eltüntetése fotókról
 
-### Hazsnálata:
+### Használata:
 
-A DirDiana a főprogram, ami egy mappát vár paraméterül. Ha csak egy képre akarjuk futtani, akkor kell csinálni egy mappát, és abba belerakni a fájlokat, maj arra meghívni.
+A DirDiana a főprogram, ami egy mappát vár paraméterül. Ha csak egy képre akarjuk futtani, akkor kell csinálni egy mappát, és abba belerakni a képet, maj arra meghívni.
 
-A simpsal mappa tartalmát vagy be kell másolni a Dianát tartalmazó mappába, (egy szinttel feljebb), vagy be kell rakni a matlab PATH-ba, különben nem fogja megtalálni.
+A simpsal mappa tartalmát vagy be kell másolni a Dianát tartalmazó mappába, (egy szinttel feljebb), vagy be kell rakni a Matlab PATH-ba, különben nem fogja megtalálni.
 
 ### Készítették:
 
